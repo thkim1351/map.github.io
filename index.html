@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <head>
+        <title>Welcome to the 3D Map API</title>
+    </head>
+    <body>
+        <!--지도는 id가 "map"인 곳에 그려집니다.-->
+        <div id="map"></div>
+ 
+        <!--proj4.js가 먼저 필요합니다.-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.8.0/proj4.min.js"></script>
+        
+        <!-- Openlayers css를 불러옵니다.-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.css"/>
+        
+        <!--API 키를 이용해 3D Map API를 불러옵니다. -->
+        <script src="http://152.99.22.8:8082/api/3DMap/dmap.min.js?api-key=caddba1e-d38c-4b4c-8657-4fd2519ca2eb&serv=6"></script>
+    </body>
+</html>
+ 
+<script>
+    /* 2021년 지도 생성
+    *  @ apiKey : 위와 동일한 키를 입력합니다.
+    */
+    var vdMap = new ol.DMap('map', 2023, {
+        apiKey: "caddba1e-d38c-4b4c-8657-4fd2519ca2eb"
+    });
+
+    vdMap.setCenter(162878.36625587233, 364946.718308019);
+</script>
