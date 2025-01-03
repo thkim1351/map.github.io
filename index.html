@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html lang="kr">
     <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.8.0/proj4.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.css"/>
+        <script src="http://152.99.22.8:8082/api/3DMap/dmap.min.js?api-key=caddba1e-d38c-4b4c-8657-4fd2519ca2eb&serv=6"></script>
+    </head>
+    <body>
+        <div id="map"></div>
+    </body>
+</html>
+<script>
+    var vdMap = new ol.DMap('map', 2022, {
+        apiKey: 'caddba1e-d38c-4b4c-8657-4fd2519ca2eb'
+    })
+ 
+    vdMap.setCenter(162878.36625587233, 364946.718308019);
+    vdMap.setRotate(50);
+    vdMap.setTilt(42);
+    vdMap.setZoom(4.5);
+ 
+    // 지도의 연도를 변경합니다. 
+    //지원하는 지도 연도는 2016, 2019, 2020, 2021, 2022입니다.
+    vdMap.changeMap(2020);
+ 
+    // LOD를 변경합니다. LOD1, LOD2, LOD3이 있습니다.
+    vdMap.changeBuildingLevel("LOD3");
+ 
+    // 현재 보여지는 지도의 연도를 반환합니다.
+    var year = vdMap.getCurMapYear();   // year = 2021
+    console.log(year);
+ 
+    // 현재 레이어를 가져옵니다. (Dem, Ortho, Building)
+    var layers = vdMap.getLayers();
+    console.log(layers);
+</script>
+
+<!DOCTYPE html>
+<html lang="kr">
+    <head>
         <title>Welcome to the 3D Map API</title>
     </head>
     <body>
@@ -17,14 +54,3 @@
         <script src="http://152.99.22.8:8082/api/3DMap/dmap.min.js?api-key=caddba1e-d38c-4b4c-8657-4fd2519ca2eb&serv=6"></script>
     </body>
 </html>
- 
-<script>
-    /* 2021년 지도 생성
-    *  @ apiKey : 위와 동일한 키를 입력합니다.
-    */
-    var vdMap = new ol.DMap('map', 2023, {
-        apiKey: "caddba1e-d38c-4b4c-8657-4fd2519ca2eb"
-    });
-
-    vdMap.setCenter(162878.36625587233, 364946.718308019);
-</script>
